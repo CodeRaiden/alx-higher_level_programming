@@ -13,7 +13,7 @@ class Square:
         """
         size: size of the square
         """
-        if isdigit(size) == False:
+        if isdigit(type(size)) == False:
             raise TypeError("size must be an integer")
         elif size < 0:
             raise ValueError("size must be >= 0")
