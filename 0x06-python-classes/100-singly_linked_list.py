@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-Node class
-creates node object
+Node Class
+creates node obj
 """
 
 
 class Node:
     """
-    Initialize node object
+    Initializing node obj
     """
     def __init__(self, data, next_node=None):
         self.data = data
@@ -39,19 +39,19 @@ class Node:
 
 """
 SinglyLinkedList class
-creates a linkedlist of sorted Node objects and prints
+creats a linkedlist of sorted Node objs and prints
 """
 
 
 class SinglyLinkedList:
     """
-    Initialize SinglyLinkedList object
+    Initializing SinglyLinkedList obj
     """
     def __init__(self):
         self.__head = None
 
     """
-    Insert sorted node object
+    Insert sorted Node obj
     """
     def sorted_insert(self, value):
         if self.__head is None or value < self.__head.data:
