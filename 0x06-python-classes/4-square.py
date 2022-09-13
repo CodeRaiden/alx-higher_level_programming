@@ -34,9 +34,9 @@ class Square:
     @size.setter
     def size(self, size):
         self.__size = size
-
-    def area(self):
         """
         Returns area of the square instance
         """
-        return self.__size ** 2
+
+    def area(self):
+        return self.__size * self.__size
