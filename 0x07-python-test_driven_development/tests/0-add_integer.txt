@@ -1,0 +1,24 @@
+==================================
+Doctest file for 0-add_integer.py
+==================================
+
+This library contains one function called
+``add_integer()``.
+
+Tests
+=====
+
+::
+
+>>> add_integer(2, 2)
+4
+>>> add_integer(2, 5.0)
+7
+>>> add_integer(90, -2)
+88
+>>> add_integer(10.3, -5)
+5
+>>> add_integer(100.3, -2.9)
+98
+>>> add_integer(1)
+99
