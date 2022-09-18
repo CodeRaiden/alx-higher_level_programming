@@ -1,0 +1,90 @@
+>>> from 3-say_my_name.py import say_my_name
+
+>>> say_my_name("Jamie", "Henderson")
+My name is Jamie Henderson
+
+>>> say_my_name("Snow", "White and the 7 drawves")
+My name is Snow White and the 7 drawves
+
+>>> say_my_name("Henry")
+My name is Henry
+
+>>> say_my_name("Bill")
+My name is Bill
+
+>>> say_my_name("Bernard Murphy")
+My name is Bernard Murphy
+
+"""
+Error
+"""
+
+>>> say_my_name("Ganso", 123)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name(123, "Benjamin")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name(None, None)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name(["Tim", "Lahm"])
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name(123, 456)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+>>> say_my_name("Sindy", "Harry", "Bill")
+Traceback (most recent call last):
+...
+TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+>>> say_my_name(2)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name(None, 2)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name(1, 2)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("Legrotagli", 2)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name(1, "Peter")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("Ferguson", (2, 3))
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name((1, 2), "Gary")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
