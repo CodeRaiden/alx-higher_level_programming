@@ -2,8 +2,7 @@
 from sys import argv
 
 """
-Module prints the coordinates of n queens
-on an nxn grid such that they are all in non-attacking positions
+This modules finds all solutions for N queens problem
 """
 
 
