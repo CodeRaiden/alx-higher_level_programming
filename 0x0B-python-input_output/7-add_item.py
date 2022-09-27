@@ -1,12 +1,20 @@
 #!/usr/bin/python3
 """
-function "save_to_json_file"
+Adds all arguments to a Python list, and then saves them to a file
 """
 
-import json
+from sys import argv
+save_to_json_file = __import__("5-save_to_json_file.py").save_to_json_file
+load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
+filename = "add_item.json"
 
-def save_to_json_file(my_obj, filename):
-    """writes an Object to a text file, using a JSON representation"""
-    with open(filename, 'w', encoding='utf-8') as f:
-        json.dump(my_obj, f)
+try:
+    json_list = load_from_json_file(filename)
+except:
+    json_list = []
+
+for arg in argv[1:]:
+    json_list.append(arg)
+
+save_to_json_file(json_list, filename)

@@ -1,11 +1,29 @@
 #!/usr/bin/python3
 """
-function "class_to_json"
+Module creates a student class
+with public attributes and retrives
+json dictionary rep
 """
 
 
-def class_to_json(obj):
-    """returns the dictionary description with simple data structure
-    (list, dictionary, string, integer and boolean)
-    for JSON serialization of an object"""
-    return obj.__dict__
+class Student:
+    """
+    student class with public instances
+    """
+    def __init__(self, first_name, last_name, age):
+        """
+        instantiation of attr
+        """
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    def to_json(self, attrs=None):
+        """
+        function returns dict repres
+        of instance
+        """
+        if attrs is None:
+            return (self.__dict__)
+        return ({key: value for key, value in self.__dict__.items()
+                 if key in attrs})
