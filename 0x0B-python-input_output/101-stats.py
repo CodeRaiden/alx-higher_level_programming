@@ -1,40 +1,39 @@
 #!/usr/bin/python3
+""" Read lines from standard input and compute metrics
+Input Format:
+<IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
 """
-reads stdin line by line and computes metrics
-"""
-import sys
 
-file_size = 0
-status_tally = {"200": 0, "301": 0, "400": 0, "401": 0,
-                "403": 0, "404": 0, "405": 0, "500": 0}
-i = 0
-try:
-    for line in sys.stdin:
-        tokens = line.split()
-        if len(tokens) >= 2:
-            a = i
-            if tokens[-2] in status_tally:
-                status_tally[tokens[-2]] += 1
-                i += 1
-            try:
-                file_size += int(tokens[-1])
-                if a == i:
-                    i += 1
-            except:
-                if a == i:
-                    continue
-        if i % 10 == 0:
-            print("File size: {:d}".format(file_size))
-            for key, value in sorted(status_tally.items()):
-                if value:
-                    print("{:s}: {:d}".format(key, value))
-    print("File size: {:d}".format(file_size))
-    for key, value in sorted(status_tally.items()):
-        if value:
-            print("{:s}: {:d}".format(key, value))
+from collections import defaultdict
+from sys import stdin, exit as sysexit
 
-except KeyboardInterrupt:
-    print("File size: {:d}".format(file_size))
-    for key, value in sorted(status_tally.items()):
-        if value:
-            print("{:s}: {:d}".format(key, value))
+STATUS_CODES = ['200', '301', '400', '401', '403', '404', '405', '500']
+
+
+def print_stats(file_size, status_codes):
+    print("File size: {}".format(total_size), *(
+        "{}: {}".format(k, status_codes[k]) for k in sorted(status_codes)
+    ), sep="\n")
+
+
+if __name__ == '__main__':
+    status_codes = defaultdict(lambda: 0)
+    total_size = 0
+    line_count = 0
+    while True:
+        try:
+            for _ in range(10):
+                line = stdin.readline()
+                if line:
+                    *_, status_code, file_size = line.split()
+                    if status_code in STATUS_CODES:
+                        status_codes[status_code] += 1
+                    total_size += int(file_size)
+                else:
+                    if total_size:
+                        print_stats(file_size, status_codes)
+                    sysexit(0)
+            print_stats(file_size, status_codes)
+        except KeyboardInterrupt:
+            print_stats(file_size, status_codes)
+            raise
