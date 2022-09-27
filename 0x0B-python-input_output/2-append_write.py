@@ -1,19 +1,10 @@
 #!/usr/bin/python3
 """
-file contains functions that
-reads n lines of a txt file and prints
-it to stdout
+function "append_wrtie"
 """
 
 
-def read_lines(filename="", nb_lines=0):
-    """
-    function that reads n lines
-    """
-    i = 0
-    with open(filename, encoding="utf-8") as myFile:
-        for line in myFile:
-            i += 1
-            print(line, end="")
-            if nb_lines == i:
-                break
+def append_write(filename="", text=""):
+    """returns the number of chars appended to "filename" from "text" """
+    with open(filename, 'a', encoding='utf=8') as f:
+        return f.write(text)
