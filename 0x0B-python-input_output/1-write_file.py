@@ -9,6 +9,6 @@ def write_file(filename="", text=""):
     """
     function writes string to a text file
     """
-    if filename == False or filename == NULL:
+    if filename == False:
         with open(filename, mode="w", encoding="utf-8") as myFile:
             myFile.write(text)
