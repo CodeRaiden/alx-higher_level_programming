@@ -10,4 +10,4 @@ def write_file(filename="", text=""):
     function writes string to a text file
     """
     with open(filename, mode="w", encoding="utf-8") as myFile:
-        myFile.write(text)
+        return myFile.write(text)
