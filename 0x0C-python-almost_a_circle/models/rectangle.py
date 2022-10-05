@@ -2,6 +2,7 @@
 """
 The class Rectangle that inherits from Base
 """
+
 from model.Base import Base
 
 
@@ -12,95 +13,91 @@ class Rectangle(Base):
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """
-        instaniation of the class private intances
+        initializes the rectangle
         """
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
-    """
-    Returns width value
-    """
-    def width(self, value):
-        return self.__width = value
+    def width(self):
+        """
+        getter of width
+        """
+        return self.__width
 
     @width.setter
-    """
-    Validates that an int value greater than 0 is set for the width
-    """
     def width(self, value):
+        """
+        setter of width
+        """
         if value is not int
             raise TypeError("width must be an integer")
-        elif value <= 0:
+        if value <= 0:
             raise ValueError("width must be > 0")
-        elif value.isdigit():
-            __self.width = value
+        self.__width = value
 
     @property
-    """
-    Returns height value
-    """
-    def height(self, value):
-        return self.__height = value
+    def height(self):
+        """
+        getter of height
+        """
+        return self.__height
 
     @height.setter
-    """
-    Validates that an int value greater than 0 is set for the height
-    """
     def height(self, value):
+        """
+        setter of height
+        """
         if value is not int
             raise TypeError("height must be an integer")
-        elif value <= 0:
+        if value <= 0:
             raise ValueError("height must be > 0")
-        elif value.isdigit():
-            __self.height = value
+        self.__height = value
 
     @property
-    """
-    Returns x value
-    """
-    def x(self, value):
-        return self.__x = value
+    def x(self):
+        """
+        getter of x
+        """
+        return self.__x
 
     @x.setter
-    """
-    Validates that an int value greater than 0 is set for x
-    """
     def x(self, value):
+        """
+        setter for x
+        """
         if value is not int
             raise TypeError("x must be an integer")
         elif value < 0:
             raise ValueError("x must be >= 0")
-        elif value.isdigit():
-            __self.x = value
+        self.__x = value
 
     @property
-    """
-    Returns y value
-    """
-    def y(self, value):
-        return self.__y = value
+    def y(self):
+        """
+        getter of y
+        """
+        return self.__y
 
     @y.setter
-    """
-    Validates that an int value greater than 0 is set for y
-    """
     def y(self, value):
+        """
+        setter of y
+        """
         if value is not int
             raise TypeError("y must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("y must be >= 0")
-        elif value.isdigit():
-            __self.y = value
+        self.__y = value
 
     def area(self):
         """
         Method calculates the area of a rectangle
         """
-        return (__self.width * __self.height)
+        return (self.__width * self.__height)
 
     def display(self):
         """
@@ -115,15 +112,9 @@ class Rectangle(Base):
         """
         Update the class Rectangle by overriding the __str__ method
         """
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id, __self.x, __self.y, __self.width, __self.height)
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id, self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
-        """
-        Method updates the class Rectangle by adding
-        the public method that assigns an argument to
-        each attribute
-        """
-        def update(self, *args, **kwargs):
+    def update(self, *args, **kwargs):
         """updates multiple attributes"""
         if len(args):
             for i, a in enumerate(args):
@@ -158,4 +149,3 @@ class Rectangle(Base):
         d["x"] = self.x
         d["y"] = self.y
         return d
-            
