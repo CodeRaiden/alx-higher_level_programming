@@ -4,4 +4,3 @@ if (process.argv[2] && isNaN(process.argv[2]) === false) {
 } else {
   console.log('Not a number');
 }
-
