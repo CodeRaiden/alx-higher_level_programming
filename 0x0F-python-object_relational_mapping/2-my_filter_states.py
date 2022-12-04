@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-script that takes in an argument and displays all values
-in the states table of hbtn_0e_0_usa where name matches
-the argument.
+script that takes an argument and matches name with the said
+argument in states.
+takes 4 arguments username, passwd, db name and state name searched
 """
+
 
 if __name__ == "__main__":
     from sys import argv
