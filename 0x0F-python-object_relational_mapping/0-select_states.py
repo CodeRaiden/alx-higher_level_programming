@@ -9,11 +9,11 @@ database name
 if __name__ == "__main__":
     from sys import argv
     import MySQLdb
-    conn = MySQLdb.connect(username=argv[1], password=argv[2], database=argv[3])
+    conn = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
     cur = conn.cursor()
     cur.execute("""SELECT * FROM states ORDER BY states.id ASC""")
-    state_li = cur.fetchall()
-    for row in state_li:
+    states = cur.fetchall()
+    for row in states:
         print(row)
     cur.close()
     conn.close()
