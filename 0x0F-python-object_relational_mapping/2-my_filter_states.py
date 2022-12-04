@@ -11,7 +11,7 @@ if __name__ == "__main__":
     conn = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
     cur = conn.cursor()
     cur.execute("SELECT * FROM states WHERE name = '{}'\
-             ORDER BY states.id in ASC".format(argv[4]))
+    ORDER BY states.id in ASC".format(argv[4]))
     sts = cur.fetchall()
     for row in sts:
         if row[1] == argv[4]:
