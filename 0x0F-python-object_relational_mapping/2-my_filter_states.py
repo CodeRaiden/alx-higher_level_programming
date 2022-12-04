@@ -12,9 +12,10 @@ if __name__ == "__main__":
     cur = conn.cursor()
     cur.execute("SELECT * FROM states WHERE name = '{}'\
             ORDER BY states.id in ASC".format(argv[4]))
-    states = cur.fetchall()
-    for row in states:
+    sts = cur.fetchall()
+    for row in sts:
         if row[1] == argv[4]:
             print(row)
     cur.close()
     conn.close()
+
