@@ -16,5 +16,5 @@ if __name__ == "__main__":
     for row in states:
         if row[1][0] == 'N':
             print(row)
-    conn.close()
     cur.close()
+    conn.close()
