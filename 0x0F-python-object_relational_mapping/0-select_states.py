@@ -13,6 +13,6 @@ if __name__ = "__main__":
     cur.execute("""SELECT * FROM states ORDER BY states.id ASC""")
     state_li = cur.fetchall()
     for row in state_li:
-        print(state)
+        print(row)
     cur.close()
     conn.close()
