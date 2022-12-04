@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that lists all cities from the db
+Script to list all cities from the db
 takes 3 arguments
 """
 
