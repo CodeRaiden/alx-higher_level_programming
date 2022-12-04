@@ -8,7 +8,7 @@ takes 3 arguments username, passwd and db name
 if __name__ == "__main__":
     from sys import argv
     import MySQLdb
-    conn = MySQLdb.connect(name=argv[1], passwd=arg[2], db=argv[3])
+    conn = MySQLdb.connect(user=argv[1], passwd=arg[2], db=argv[3])
     cur = conn.cursor()
     cur.execute("SELECT * FROM states where name LIKE 'N%'\
             ORDER BY states.id ASC")
