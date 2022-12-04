@@ -20,4 +20,3 @@ if __name__ == "__main__":
 
     session.add(City(name="San Francisco", State(name="California")))
     session.commit()
-    session.close()
