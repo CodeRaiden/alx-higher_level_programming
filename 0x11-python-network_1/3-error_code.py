@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""
-script that takes in a URL, sends a request to the URL and displays the body of the response
-"""
 import urllib.request
 import urllib.parse
 from urllib.error import URLError, HTTPError
 from sys import argv
+"""
+script that takes in url and sends a request to url
+displays body of response
+"""
 
 
 if __name__ == "__main__":
-    url = argv[1]
-    req = urllib.request.Request(url)
+    rep = urllib.request.Request(argv[1])
     try:
-        with urllib.request.urlopen(req) as resp
-        print(resp.read().decode(encoding="utf-8"))
-    except urllib.error.HTTPError as e:
-        print("Error code: {}".format(e.code))
+        with urllib.request.urlopen(rep) as reply:
+            print(reply.read().decode(encoding="utf-8"))
+    except URLError as err:
+        print("Error code: {}".format(err.code))
