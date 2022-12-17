@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""
-script takes githut credentials and uses it to display id
-"""
+'''
+Log in to Github
+'''
 
-from sys import argv
+import sys
 import requests
 
+URL = 'https://api.github.com/user'
 
-if __name__ == "__main__":
-    URL = 'https://api.github.com/user'
-    cred = (argv[1], argv[2])
-    r = request.get(URL, auth=cred)
-    data = r.jason()
+if __name__ == '__main__':
+    auth = (sys.argv[1], sys.argv[2])
+    resp = requests.get(URL, auth=auth)
+    data = resp.json()
     print(data.get('id'))

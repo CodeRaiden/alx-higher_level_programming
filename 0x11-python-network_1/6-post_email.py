@@ -7,8 +7,11 @@ import sys
 import requests
 
 
-if __name__ = "__main__":
-    email = {'email': sys.argv[1]}
-    URL = sys.argv[2]
-    r = requests.get(URL, data=email)
-    print(r.text)
+if __name__ == '__main__':
+
+    if len(sys.argv) != 3:
+        print('Usage: ', __file__, 'URL', 'email', file=sys.stderr)
+        sys.exit(1)
+
+    resp = requests.post(sys.argv[1], data={'email': sys.argv[2]})
+    print(resp.text)

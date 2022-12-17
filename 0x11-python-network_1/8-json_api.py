@@ -6,18 +6,18 @@ Take a letter and send a POST request to http://0.0.0.0:5000/search_user
 import sys
 import requests
 
+URL = 'http://0.0.0.0:5000/search_user'
 
-if __name__ == "__main__":
-    URL = 'http://0.0.0.0:5000/search_user'
-    data = {'q': '' if len(argv) == 1 else argv[1]}
-    r = requests.post(URL, data=data)
+if __name__ == '__main__':
+
+    data = {'q': '' if len(sys.argv) == 1 else sys.argv[1]}
+    resp = requests.post(URL, data=data)
     try:
-        jason = r.jason()
-    except:
-        print("Not a valid JSON")
+        json = resp.json()
+    except ValueError:
+        print('Not a valid JSON')
     else:
-        if jason:
-            print("[{}] {}".format(jason.get('id'),jason.get('name')))
+        if json:
+            print('[{}] {}'.format(json.get('id'), json.get('name')))
         else:
-            print("No result")
-
+            print('No result')
