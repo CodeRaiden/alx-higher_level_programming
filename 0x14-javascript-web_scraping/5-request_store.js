@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Get the contents of a webpage and store it in a file
+// Script gets the contents of a webpage and stores it in a file
 const request = require('request');
 request(process.argv[2], (err, resp, body) => {
   if (err) {
