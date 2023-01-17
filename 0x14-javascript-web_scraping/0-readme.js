@@ -1,10 +1,10 @@
 #!/usr/bin/node
-// Print the contents of a file
+// PScript prints the contents of a file
 const fs = require('fs');
-fs.readFile(process.argv[2], 'utf8', (err, data) => {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log(data);
-	}
+fs.readFile(process.argv[2], 'utf-8', (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(data);
+  }
 });

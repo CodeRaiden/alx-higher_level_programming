@@ -1,25 +1,23 @@
 #!/usr/bin/node
-// Script prints all characters of a Star Wars movie
-const request = require('request');
-const url = 'https://swapi.co/api/films';
-request(url, { json: true }, (err, resp, body) => {
-  if (err) {
-    console.log(err);
-  } else if (body) {
-    for (const i in body.results) {
-      if (body.results[i].url.endsWith(`/${process.argv[2]}/`)) {
-        const characters = body.results[i].characters;
-        (func, ...args) { 
-        for (const j in characters) {
-          request(characters[j], { json: true }, (err, resp, body) => {
-            if (err) {
-              console.log(err);
-            } else if (body) {
-              console.log(body.name);
-            }
-          });
-        }
-      }
+let request = require('request');
+let movie = 'http://swapi.co/api/films/';
+
+request.get(movie + process.argv[2], function (err, response, body) {
+  if (err) throw err;
+  if (response.statusCode === 200) {
+    let everything = JSON.parse(body);
+    let listch = [];
+    for (let charac of everything.characters) {
+      listch.push(new Promise(function (resolve, reject) {
+        request.get(charac, function (err, response, body) {
+          if (err) throw err; if (response.statusCode === 200) { resolve(JSON.parse(body).name); } else { reject(Error('Unknown')); }
+        });
+      }));
     }
+    Promise.all(listch).then(function (names) {
+      names.forEach(function (name) {
+        console.log(name);
+      });
+    });
   }
 });
