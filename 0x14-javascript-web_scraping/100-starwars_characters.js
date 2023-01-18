@@ -1,16 +1,16 @@
 #!/usr/bin/node
-let request = require('request');
-let api = 'https://swapi.co/api/films/';
-request.get(api + process.argv[2], function (err, response, body) {
-  if (err) throw err;
-  else if (response.statusCode === 200) {
-    let everything = JSON.parse(body);
-    for (let ch of everything.characters) {
-      request.get(ch, function (err, response, body) {
-        let everything = JSON.parse(body);
-        if (err) throw err;
-        else if (response.statusCode === 200) { console.log(everything.name); }
+// Print all characters of a Star Wars movie
+const request = require('request');
+const url = 'https://swapi.co/api/films/' + process.argv[2];
+request(url, function (error, response, body) {
+  if (!error) {
+    const characters = JSON.parse(body).characters;
+    characters.forEach((character) => {
+      request(character, function (error, response, body) {
+        if (!error) {
+          console.log(JSON.parse(body).name);
+        }
       });
-    }
+    });
   }
 });
