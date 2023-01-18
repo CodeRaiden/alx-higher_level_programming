@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Print all characters of a Star Wars movie
 let request = require('request');
 let movie = 'https://swapi-api.alx-tools.com/api/films/';
 
