@@ -1,10 +1,11 @@
 #!/usr/bin/node
 // Print the title of the Star Wars movie matching the given number
-#!/usr/bin/node
 const request = require('request');
-request.get('http://swapi.co/api/films/' + process.argv[2] + '/', function (err, response, body) {
-  if (err) throw err;
-  else if (response.statusCode === 200) {
-    console.log(JSON.parse(body).title);
+const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
+request(url, { json: true }, (err, resp, body) => {
+  if (err) {
+    console.log(err);
+  } else if (body) {
+    console.log(body.title);
   }
 });
