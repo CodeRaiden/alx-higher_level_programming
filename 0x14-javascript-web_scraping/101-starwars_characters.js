@@ -1,6 +1,6 @@
 #!/usr/bin/node
 let request = require('request');
-let movie = 'http://swapi.co/api/films/';
+let movie = 'https://swapi-api.alx-tools.com/api/films/';
 
 request.get(movie + process.argv[2], function (err, response, body) {
   if (err) throw err;
